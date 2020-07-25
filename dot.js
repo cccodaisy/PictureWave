@@ -7,7 +7,7 @@ export class Dot {
         this.y = y;
         const ratio = radius / 256 / 2;
         this.targetRadius = ratio * scale;
-        this.radius = radius;
+        this.radius = 0;
         this.radiusV = 0;
         this.pixelSize = pixelSize;
         this.pixelSizeHalf = pixelSize / 2;
@@ -25,7 +25,7 @@ export class Dot {
 
         ctx.beginPath();
         // ctx.fillStyle = `rgb(${this.red}, ${this.green}, ${this.blue})`;
-        ctx.fillStyle = '#000';
+        ctx.fillStyle = '#fff';
         ctx.arc(this.x, this.y, this.radius, 0, PI2, false);
         ctx.fill();
     }

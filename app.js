@@ -33,7 +33,7 @@ class App {
         };
 
         this.image = new Image();
-        this.image.src = "./gogh1.jpg";
+        this.image.src = "./flume.jpg";
         this.image.onload = () => {
             this.isLoaded = true;
             this.drawImage();
@@ -125,6 +125,7 @@ class App {
                     this.radius,
                     this.pixelSize,
                     red, green, blue,
+                    scale
                 );
 
                 if (dot.targetRadius > 0.1){
