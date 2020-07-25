@@ -1,10 +1,13 @@
 const PI2 = Math.PI * 2;
+const BOUNCE = 0.82;
 
 export class Dot {
     constructor(x, y, radius, pixelSize, red, green, blue) {
         this.x = x;
         this.y = y;
+        this.targetRadius = radius;
         this.radius = radius;
+        this.radiusV = 0;
         this.pixelSize = pixelSize;
         this.pixelSizeHalf = pixelSize / 2;
         this.red = red;
@@ -18,8 +21,14 @@ export class Dot {
         ctx.fillRect(
             this.x - this.pixelSizeHalf,
             this.y - this.pixelSizeHalf,
-            this,this.pixelSize, this.pixelSize
+            this.pixelSize, this.pixelSize
         );
+
+        // wave
+        const accel = (this.targetRadius - this.radius) / 2;
+        this.radiusV += accel;
+        this.radiusV *= BOUNCE;
+        this.radius += this.radiusV;
 
         ctx.beginPath();
         ctx.fillStyle = `rgb(${this.red}, ${this.green}, ${this.blue})`;
@@ -28,6 +37,7 @@ export class Dot {
     }
 
     reset() {
-
+        this.radius = 0;
+        this.radiusV = 0;
     }
 }

@@ -126,6 +126,7 @@ class App {
                 const red = this.imgData.data[pixelIndex + 0];
                 const green = this.imgData.data[pixelIndex + 1];
                 const blue = this.imgData.data[pixelIndex + 2];
+            
 
                 const dot = new Dot(
                     x, y,
@@ -160,6 +161,10 @@ class App {
     onClick(e) {
         // 클릭시 해당 위치에서 원형으로 퍼짐
         this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight);
+
+        for (let i = 0; i <  this.dots.length; i++) {
+            this.dots[i].reset();
+        }
 
         this.ctx.drawImage(
             this.image,
